@@ -16,6 +16,9 @@ import views.html.index;
  * and decompress zip
  */
 public class HomeController extends Controller {
+
+    private static final String ZIP_URL = "/tmp/";
+
     /**
      * An action that renders a upload zip page 
      */
@@ -32,9 +35,9 @@ public class HomeController extends Controller {
         String filename = fileInput.getFilename();
         if (fileInput != null) {
             File file = (File) fileInput.getFile();
-            File nf = new File("/tmp/" + filename);
+            File nf = new File(ZIP_URL + filename);
             boolean rst = file.renameTo(nf);
-            ZipUtils.unZip("/tmp/" + filename, filename);
+            ZipUtils.unZip(ZIP_URL + filename, ZIP_URL);
         } else {
             return badRequest("error");
         }
