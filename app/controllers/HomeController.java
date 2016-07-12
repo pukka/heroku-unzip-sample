@@ -6,6 +6,7 @@ import play.mvc.Result;
 import play.data.Form;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.FileNotFoundException;
 import utils.ZipUtils;
 
 import views.html.index;
+import views.html.afterUpload;
 
 /**
  * This controller contains an action to handle upload zip
@@ -42,12 +44,8 @@ public class HomeController extends Controller {
             boolean rst = file.renameTo(nf);
             ZipUtils.unZip(ZIP_URL + filename, ZIP_URL);
             File dir = new File(ZIP_URL);
-            File[] dirList = dir.listFiles();
-            List<String> fileList = new ArrayList<String>();
-            for(int i = 0; i < dirList.length; i++){
-                fileList.add(dirList[i].getName());
-            }
-            return ok(fileList.toString());
+            String[] dirList = dir.list();
+            return ok(afterUpload.render(Arrays.asList(dirList)));
         } else {
             return badRequest("error");
         }

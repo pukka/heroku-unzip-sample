@@ -1,0 +1,9 @@
+@(items: List[String])
+
+@main {
+  <ul>
+    @for(item <- items) {
+      <li>@item</li>
+    }
+  </ul>
+}
