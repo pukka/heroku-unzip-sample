@@ -5,6 +5,9 @@ import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
 import play.data.Form;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import utils.ZipUtils;
@@ -38,9 +41,15 @@ public class HomeController extends Controller {
             File nf = new File(ZIP_URL + filename);
             boolean rst = file.renameTo(nf);
             ZipUtils.unZip(ZIP_URL + filename, ZIP_URL);
+            File dir = new File(ZIP_URL);
+            File[] dirList = dir.listFiles();
+            List<String> fileList = new ArrayList<String>();
+            for(int i = 0; i < dirList.length; i++){
+                fileList.add(dirList[i].getName());
+            }
+            return ok(fileList.toString());
         } else {
             return badRequest("error");
         }
-        return redirect(routes.HomeController.index());
     }
 }
