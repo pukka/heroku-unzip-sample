@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-  "org.apache.ant" % "ant" % "1.9.7"
+  "org.apache.ant" % "ant" % "1.9.7",
+  "net.kaliber" %% "play-s3" % "8.0.0"
 )
