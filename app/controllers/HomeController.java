@@ -1,5 +1,6 @@
 package controllers;
 
+import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
@@ -29,6 +30,7 @@ public class HomeController extends Controller {
      * An action that renders a upload zip page 
      */
     public Result index() {
+        Logger.info("render top page");
         return ok(index.render());
     }
 
