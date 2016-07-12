@@ -1,5 +1,9 @@
+
 logs
 target
+.*.swp
+*.*.swp
+conf/application.conf
 /.idea
 /.idea_modules
 /.classpath

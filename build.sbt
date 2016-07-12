@@ -11,5 +11,5 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   "org.apache.ant" % "ant" % "1.9.7",
-  "net.kaliber" %% "play-s3" % "8.0.0"
+  "com.amazonaws" % "aws-java-sdk" % "1.11.15"
 )
