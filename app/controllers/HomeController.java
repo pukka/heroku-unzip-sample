@@ -19,7 +19,7 @@ import views.html.index;
 import views.html.afterUpload;
 
 import javax.inject.*;
-import modules.S3Interface;
+import services.S3Interface;
 
 /**
  * This controller contains an action to handle upload zip

@@ -1,4 +1,4 @@
-package modules;
+package services;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -16,7 +16,7 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.google.inject.Provider;
 
 @Singleton
-class S3Action implements S3Interface {
+public class S3Action implements S3Interface {
 
     public static AmazonS3 amazonS3;
 

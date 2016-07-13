@@ -4,6 +4,8 @@ import java.time.Clock;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
+import services.S3Interface;
+import services.S3Action;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -26,6 +28,8 @@ public class Module extends AbstractModule {
         bind(ApplicationTimer.class).asEagerSingleton();
         // Set AtomicCounter as the implementation for Counter.
         bind(Counter.class).to(AtomicCounter.class);
+        // bind S3 interface
+        bind(S3Interface.class).to(S3Action.class);
     }
 
 }
