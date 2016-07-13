@@ -18,6 +18,9 @@ import utils.ZipUtils;
 import views.html.index;
 import views.html.afterUpload;
 
+import javax.inject.*;
+import modules.S3Interface;
+
 /**
  * This controller contains an action to handle upload zip
  * and decompress zip
@@ -25,12 +28,19 @@ import views.html.afterUpload;
 public class HomeController extends Controller {
 
     private static final String ZIP_URL = "/tmp/";
+    private final S3Interface s3;
+
+    @Inject
+    public HomeController(S3Interface s3) {
+       this.s3 = s3;
+    }
 
     /**
      * An action that renders a upload zip page 
      */
     public Result index() {
         Logger.info("render top page");
+        s3.sayHello();
         return ok(index.render());
     }
 

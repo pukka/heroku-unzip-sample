@@ -43,4 +43,9 @@ class S3Action implements S3Interface {
              return null;
         });
     }
+
+    @Override
+    public void sayHello() {
+        Logger.info("Hello...........................");
+    }
 }
