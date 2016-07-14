@@ -24,8 +24,9 @@ public class ZipUtils {
      * unZip
      * @param zipFilePath
      * @param destDir
+     * @return unzip dir
      */
-    public static void unZip(String zipFilePath, String destDir) {
+    public static String unZip(String zipFilePath, String destDir) {
         ZipFile zipFile = null;
         try {
             BufferedInputStream bis = null;
@@ -58,17 +59,35 @@ public class ZipUtils {
                 bos.close();
                 fos.close();
                 bis.close();
+                return destDir + getPreffix(entry.getName());
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return zipFilePath;
         }finally{
             try {
             	if (zipFile != null) {
                     zipFile.close();
             	}
+                 return zipFilePath;
             } catch (IOException e) {
                 e.printStackTrace();
+                return zipFilePath;
             }
         }
+    }
+    /**
+     * Get a prefix
+     * @param filename 
+     * @return filename
+     */
+    public static String getPreffix(String fileName) {
+        if (fileName == null)
+            return null;
+        int point = fileName.lastIndexOf(".");
+        if (point != -1) {
+            return fileName.substring(0, point);
+        } 
+        return fileName;
     }
 }

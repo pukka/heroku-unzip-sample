@@ -1,11 +1,23 @@
 @main {
   @helper.form(
     action = routes.HomeController.unzip,
-    'enctype -> "multipart/form-data"
+    'enctype -> "multipart/form-data",
+    '_label -> "Zip file"
   ) {   
     <input type="file" name="inputFile">
     <p>
       <input type="submit">
     </p>    
+  }
+
+  @helper.form(
+    action = routes.HomeController.uploadImage,
+    'enctype -> "multipart/form-data",
+    '_label -> "Image"
+  ) {   
+    <input type="file" name="inputFile">
+    <p>
+      <input type="submit">
+    </p>
   }
 }
