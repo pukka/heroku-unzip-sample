@@ -18,7 +18,7 @@ import utils.ZipUtils;
 import views.html.index;
 import views.html.afterUpload;
 
-import javax.inject.*;
+import javax.inject.Inject;
 import services.S3Interface;
 
 /**
@@ -28,7 +28,7 @@ import services.S3Interface;
 public class HomeController extends Controller {
 
     private static final String ZIP_URL = "/tmp/";
-    private final S3Interface s3;
+    private static S3Interface s3;
 
     @Inject
     public HomeController(S3Interface s3) {
@@ -40,7 +40,6 @@ public class HomeController extends Controller {
      */
     public Result index() {
         Logger.info("render top page");
-        s3.sayHello();
         return ok(index.render());
     }
 
